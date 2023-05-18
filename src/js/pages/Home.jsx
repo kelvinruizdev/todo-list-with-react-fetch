@@ -176,6 +176,7 @@ function Home() {
                                     </div>
                                     :                          
                                     allTasks.map((item, index) => {
+                                        addTask()
                                         return (
                                             <div key={index} className="task-container border-top border-ligth">    
                                                 <div className="task-container--delete ">
