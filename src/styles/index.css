@@ -1,12 +1,67 @@
 
-/* 
+.task-container{
+    width: 100%;
+    font-size: 25px;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+.title{
+    text-align: center;
+    font-size: 100px;
+    color: rgb(219, 162, 139);
+}
 
-*/
+.box-shadow{
+    box-shadow: 0px 0px 10px rgb(133, 133, 133)
+}
+
+form input[type="text"]{
+    width: 100%;
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid grey ;
+}
+
+.delete-task{
+    
+    position: absolute;
+    top: 0;
+    width: 100%;
+    /* padding: 15px 0px ; */
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    bottom: 0;
+    opacity: 0;
+}
+
+.delete-task:hover{
+    opacity: 1;
+}
+
+.task-container--delete{
+    position: relative;
+    /* padding: 0px 15px; */
+    display: flex;
+    align-items: center;
+    
+}
+
+.task-container--delete p{
+    margin: 0px;
+    margin-left: 15px;
+}
+
+button{
+    background-color: grey;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+button:hover{
+    border: 1px solid rgb(219, 162, 139);
+    color: rgb(219, 162, 139);
+}
