@@ -78,9 +78,31 @@ function Home() {
     async function addTask(){
         try {
             let response = await fetch(`${URLBASE}`,{
-                    method:"PUT"
+                    method:"PUT",
+                    headers:{
+                        "Content-type":"application/json"
+                    },
+                    body:JSON.stringify(allTasks)                   
                 }
             )
+            
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    //Delete a task
+    async function deleteTask(oneLessTask) {
+        try {
+            let response = await fetch(`${URLBASE}`,{
+                    method:"PUT",
+                    headers:{
+                        "Content-type":"application/json"
+                    },
+                    body:JSON.stringify(oneLessTask)                   
+                }
+            )
+            
         } catch (err) {
             console.log(err)
         }
@@ -96,27 +118,30 @@ function Home() {
         setTask({
             ...task,
             [target.name]: target.value,
+            done: false
         })
-        console.log
+        console.log(target.name, target.value, task)
+        
     }
 
     //guarda la tarea en la lista de tareas
     function handleSubmit(event) {
         event.preventDefault()
-        if (task.name.trim() != "") {
+
+        if (task.label.trim() != "") {
+            
             setAllTasks([
                 ...allTasks,
                 task
-            ]) //debe mantener la estructura array de objeto 
-            setTask({ name: "" })
-
-        } else {
-
+            ]) //debe mantener la estructura array de objeto
+            setTask({ label: "" , done: null})
+            addTask()
         }
     }
 
     function handleDeleteTask(index) {
         const oneLessTask = allTasks.filter(task => task.label != allTasks[index].label)
+        deleteTask(oneLessTask)
         setAllTasks(oneLessTask)
     }
 
@@ -135,11 +160,11 @@ function Home() {
                                 <div className="form-group lead">
                                     <input className=""
                                         placeholder="What needs to be done?"
-                                        id="name"
+                                        id="label"
                                         type="text"
                                         onChange={handleChange}
-                                        name="name"
-                                        value={task.name}
+                                        name="label"
+                                        value={task.label}
                                     />
                                 </div>
                             </form>
@@ -147,7 +172,7 @@ function Home() {
                             {      
                                 isDeletedUser?
                                     <div className="task-container text-center">
-                                        <p>User not found, please refresh!</p>
+                                        <p>User not found, please press create user!</p>
                                     </div>
                                     :                          
                                     allTasks.map((item, index) => {
@@ -182,7 +207,7 @@ function Home() {
                         </div>
 
                         <div className="d-flex justify-content-center"
-                            onClick={deleteUser}
+                            onClick={addTask}
                         > 
                             <button className="">
                                 DELETE USER
