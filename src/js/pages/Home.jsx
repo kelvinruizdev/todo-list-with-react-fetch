@@ -94,6 +94,23 @@ function Home() {
         }
     }
 
+    async function deleteAllTask() {
+        try {
+            let response = await fetch(`${URLBASE}`,{
+                    method:"PUT",
+                    headers:{
+                        "Content-type":"application/json"
+                    },
+                    body:JSON.stringify([{label: "sample task", done: false}])                   
+                }
+            )
+            getAllTasks()
+            
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     //Delete a task
     async function deleteTask(oneLessTask) {
         try {
@@ -238,9 +255,12 @@ function Home() {
                             
                         </div>
 
-                        <div className="d-flex justify-content-center"> 
+                        <div className="d-flex justify-content-around"> 
                             <button onClick={deleteUser}>
                                 DELETE USER
+                            </button>
+                            <button onClick={deleteAllTask}>
+                                DELETE ALL TASKS
                             </button>
                         </div>
                     </div>
