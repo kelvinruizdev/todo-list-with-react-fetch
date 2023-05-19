@@ -120,8 +120,6 @@ function Home() {
             [target.name]: target.value,
             done: false
         })
-        console.log(target.name, target.value, task)
-        
     }
 
     //guarda la tarea en la lista de tareas
@@ -129,13 +127,12 @@ function Home() {
         event.preventDefault()
 
         if (task.label.trim() != "") {
-            
             setAllTasks([
                 ...allTasks,
                 task
             ]) //debe mantener la estructura array de objeto
             setTask({ label: "" , done: null})
-            addTask()
+            // addTask()
         }
     }
 
@@ -172,7 +169,10 @@ function Home() {
                             {      
                                 isDeletedUser?
                                     <div className="task-container text-center">
-                                        <p>User not found, please press create user!</p>
+                                        <p>User not found, please press create user!</p>            
+                                        <button onClick={createUser}>
+                                            CREATE USER
+                                        </button>
                                     </div>
                                     :                          
                                     allTasks.map((item, index) => {
@@ -207,10 +207,8 @@ function Home() {
                             
                         </div>
 
-                        <div className="d-flex justify-content-center"
-                            onClick={addTask}
-                        > 
-                            <button className="">
+                        <div className="d-flex justify-content-center"> 
+                            <button onClick={deleteUser}>
                                 DELETE USER
                             </button>
                         </div>
