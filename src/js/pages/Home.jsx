@@ -139,9 +139,7 @@ function Home() {
         }
     }
     function handleDone(event) {
-        console.log(event.target.checked)
-        console.log(event.target.id)
-        
+
         if(event.target.checked){
             allTasks[event.target.id].done = true;
             setAllTasks(allTasks) 
@@ -197,8 +195,8 @@ function Home() {
                                         addTask()
                                         return (
                                             <div key={index} className=" border-top border-ligth">    
-                                                <div className="task-container row ">
-                                                    <div className="col-6 text-center">
+                                                <div className="task-container row mt-2">
+                                                    <div className="col-6 text-center overflow-auto">
                                                         <p className="">{item.label}</p>
                                                     </div>
                                                     <div className="col-6 d-flex justify-content-around">

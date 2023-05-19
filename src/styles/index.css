@@ -3,7 +3,7 @@
     width: 100%;
     font-size: 25px;
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
 }
 
 .title{
