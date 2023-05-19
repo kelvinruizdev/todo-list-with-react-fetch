@@ -2,6 +2,8 @@
 .task-container{
     width: 100%;
     font-size: 25px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .title{
@@ -24,14 +26,14 @@ form input[type="text"]{
 }
 
 .delete-task{
-    
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     width: 100%;
+    /*background-color: rgb(219, 162, 139);
     /* padding: 15px 0px ; */
-    display: flex;
+    /*display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: end;*/
     bottom: 0;
     opacity: 0;
 }
@@ -41,16 +43,16 @@ form input[type="text"]{
 }
 
 .task-container--delete{
-    position: relative;
+    /* position: relative; */
     /* padding: 0px 15px; */
-    display: flex;
-    align-items: center;
+    /*display: flex;*/
+    /* align-items: end; */
     
 }
 
 .task-container--delete p{
-    margin: 0px;
-    margin-left: 15px;
+    /* margin: 0px;
+    margin-left: 15px; */
 }
 
 button{

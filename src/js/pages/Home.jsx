@@ -19,6 +19,9 @@ function Home() {
     //Borro usuario?
     const [isDeletedUser, setIsDeletedUser] = useState(false)
 
+    //Esta hecha?
+    const [isChecked, setIsChecked] = useState(false)
+
     //FUNCTIONS
 
     //Get all tasks
@@ -135,6 +138,21 @@ function Home() {
             // addTask()
         }
     }
+    function handleDone(event) {
+        console.log(event.target.checked)
+        console.log(event.target.id)
+        
+        if(event.target.checked){
+            allTasks[event.target.id].done = true;
+            setAllTasks(allTasks) 
+            setIsChecked(true)
+        }else{
+            allTasks[event.target.id].done = false;
+            setAllTasks(allTasks)
+            setIsChecked(false)
+        }
+
+    }
 
     function handleDeleteTask(index) {
         const oneLessTask = allTasks.filter(task => task.label != allTasks[index].label)
@@ -166,7 +184,7 @@ function Home() {
                                 </div>
                             </form>
 
-                            {      
+                            {   
                                 isDeletedUser?
                                     <div className="task-container text-center">
                                         <p>User not found, please press create user!</p>            
@@ -178,14 +196,29 @@ function Home() {
                                     allTasks.map((item, index) => {
                                         addTask()
                                         return (
-                                            <div key={index} className="task-container border-top border-ligth">    
-                                                <div className="task-container--delete ">
-                                                    <p className="">{item.label}</p>
-                                                    <div className="delete-task btn"
-                                                        onClick={()=>{handleDeleteTask(index)}}
-                                                    >
-                                                        <FontAwesomeIcon icon={faX} style={{color: "#000000"}}/>
-                                                    </div> 
+                                            <div key={index} className=" border-top border-ligth">    
+                                                <div className="task-container row ">
+                                                    <div className="col-6 text-center">
+                                                        <p className="">{item.label}</p>
+                                                    </div>
+                                                    <div className="col-6 d-flex justify-content-around">
+                                                        <div className="form-check">
+                                                            <input onChange={handleDone} 
+                                                                className="form-check-input" 
+                                                                type="checkbox" 
+                                                                value="" 
+                                                                id={index} 
+                                                                name="checkbox" 
+                                                                defaultChecked={item.done}
+                                                            />
+                                                            <label className="form-check-label fs-5" htmlFor="check">done?</label>
+                                                        </div>
+                                                        <div className="delete-task btn "
+                                                            onClick={()=>{handleDeleteTask(index)}}
+                                                        >
+                                                            <FontAwesomeIcon icon={faX} style={{color: "#000000"}}/>
+                                                        </div>
+                                                    </div>
                                                 </div>                                  
                                             </div>
                                         )
